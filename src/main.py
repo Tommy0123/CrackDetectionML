@@ -1,18 +1,26 @@
 import argparse
+from pathlib import Path
+from utils import loader
 
 
 def train(parser):
     """処理した引数を受け取り、一連の学習を行います。
     """
+    data_loader = loader.Loader(dir_train=Path(r'.\src\datasets\train'),
+                                dir_masks=Path(r'.\src\datasets\train_masks'),
+                                labels=("ground", "crack", "void"),
+                                init_size=(128, 128),
+                                one_hot=True)
+    print(data_loader)
 
 
 def get_parser():
     """処理した引数を返します。
     """
     parser = argparse.ArgumentParser(
-        prog='Image segmentation using U-Net',
-        usage='python train.py',
-        description='This module demonstrates image segmentation using U-Net.',
+        prog='Crack Detection.',
+        usage='python main.py',
+        description='This module demonstrates crack detection.',
         add_help=True)
 
     parser.add_argument('-d',
