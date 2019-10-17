@@ -30,6 +30,7 @@ def test_Loader(paths_train, paths_masks):
 
 
 def test_Loader_raise_File_Not_Found(paths_train, paths_empty_directory):
+    Path(paths_empty_directory).mkdir(exist_ok=True)
     with pytest.raises(FileNotFoundError):
         Loader(paths_train, paths_empty_directory)
 
