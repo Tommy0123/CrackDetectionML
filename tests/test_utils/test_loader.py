@@ -25,8 +25,12 @@ def paths_dummy_directory():
 
 def test_Loader(paths_train, paths_masks):
     loader = Loader(paths_train, paths_masks)
-    assert len(loader.images_train) == 1, "should 1."
-    assert len(loader.images_mask) == 1, "should 1."
+    assert len(loader.images_train) == 2, "should 2."
+    assert len(loader.images_mask) == 2, "should 2."
+    assert loader.paths_train[0].name == \
+        "crack_00000.jpg", "should crack_00000.jpg."
+    assert loader.paths_masks[0].name == \
+        "crack_00000_mask.png", "should crack_00000.png."
 
 
 def test_Loader_raise_File_Not_Found(paths_train, paths_empty_directory):
