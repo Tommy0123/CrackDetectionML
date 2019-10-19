@@ -18,6 +18,8 @@ class Loader(object):
         if len(paths_train) != len(paths_masks):
             raise ValueError('Num of images does not match.')
 
+        self.paths_train = paths_train
+        self.paths_masks = paths_masks
         self.images_train = Loader.import_train_data(paths_train, init_size)
         self.images_mask = Loader.import_mask_data(paths_masks, init_size,
                                                    labels, one_hot)
